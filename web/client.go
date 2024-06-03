@@ -1,14 +1,14 @@
-package main 
+package main
 
 import (
-	"log"
-	"net/http"
 	"bytes"
+	"encoding/json"
+	"github.com/vinx/stream-video/web/config"
 	"io"
 	"io/ioutil"
+	"log"
+	"net/http"
 	"net/url"
-	"encoding/json"
-	"avenssi/config"
 )
 
 var httpClient *http.Client

@@ -1,21 +1,21 @@
 package session
 
 import (
-	"time"
+	"github.com/vinx/stream-video/api/dbops"
+	"github.com/vinx/stream-video/api/defs"
+	"github.com/vinx/stream-video/api/utils"
 	"sync"
-	"github.com/avenssi/video_server/api/defs"
-	"github.com/avenssi/video_server/api/dbops"
-	"github.com/avenssi/video_server/api/utils"
+	"time"
 )
 
-var sessionMap *sync.Map 
+var sessionMap *sync.Map
 
 func init() {
 	sessionMap = &sync.Map{}
 }
 
-func nowInMilli() int64{
-	return time.Now().UnixNano()/1000000
+func nowInMilli() int64 {
+	return time.Now().UnixNano() / 1000000
 }
 
 func deleteExpiredSession(sid string) {
@@ -29,7 +29,7 @@ func LoadSessionsFromDB() {
 		return
 	}
 
-	r.Range(func(k, v interface{}) bool{
+	r.Range(func(k, v interface{}) bool {
 		ss := v.(*defs.SimpleSession)
 		sessionMap.Store(k, ss)
 		return true
@@ -39,7 +39,7 @@ func LoadSessionsFromDB() {
 func GenerateNewSessionId(un string) string {
 	id, _ := utils.NewUUID()
 	ct := nowInMilli()
-	ttl := ct + 30 * 60 * 1000// Severside session valid time: 30 min
+	ttl := ct + 30*60*1000 // Severside session valid time: 30 min
 
 	ss := &defs.SimpleSession{Username: un, TTL: ttl}
 	sessionMap.Store(id, ss)

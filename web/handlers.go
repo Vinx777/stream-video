@@ -1,16 +1,16 @@
-package main 
+package main
 
 import (
+	"encoding/json"
+	"github.com/julienschmidt/httprouter"
+	"github.com/vinx/stream-video/web/config"
 	"html/template"
-	"net/http"
-	"log"
 	"io"
 	"io/ioutil"
-	"net/url"
-	"encoding/json"
+	"log"
+	"net/http"
 	"net/http/httputil"
-	"github.com/julienschmidt/httprouter"
-	"avenssi/config"
+	"net/url"
 )
 
 type HomePage struct {
@@ -25,8 +25,8 @@ func homeHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	cname, err1 := r.Cookie("username")
 	sid, err2 := r.Cookie("session")
 
-    if err1 != nil || err2 != nil {
-		p := &HomePage{Name: "avenssi"}
+	if err1 != nil || err2 != nil {
+		p := &HomePage{Name: "vinx"}
 		t, e := template.ParseFiles("./templates/home.html")
 		if e != nil {
 			log.Printf("Parsing template home.html error: %s", e)
@@ -34,7 +34,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		}
 
 		t.Execute(w, p)
-	    return
+		return
 	}
 
 	if len(cname.Value) != 0 && len(sid.Value) != 0 {
@@ -100,4 +100,3 @@ func proxyUploadHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Pa
 	proxy := httputil.NewSingleHostReverseProxy(u)
 	proxy.ServeHTTP(w, r)
 }
-

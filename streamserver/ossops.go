@@ -1,9 +1,9 @@
-package main 
+package main
 
 import (
-	"log"
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
-	"avenssi/config"
+	"github.com/vinx/stream-video/streamserver/config"
+	"log"
 )
 
 var EP string
@@ -37,5 +37,3 @@ func UploadToOss(filename string, path string, bn string) bool {
 
 	return true
 }
-
-

@@ -1,17 +1,17 @@
-package main 
+package main
 
 import (
-	"net/http"
 	"github.com/julienschmidt/httprouter"
-	"github.com/avenssi/video_server/scheduler/dbops"
+	"github.com/vinx/stream-video/scheduler/dbops"
+	"net/http"
 )
 
-func vidDelRecHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params){
+func vidDelRecHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	vid := p.ByName("vid-id")
 
 	if len(vid) == 0 {
 		sendResponse(w, 400, "video id should not be empty")
-		return 
+		return
 	}
 
 	err := dbops.AddVideoDeletionRecord(vid)

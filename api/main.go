@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/avenssi/video_server/api/session"
 	"github.com/julienschmidt/httprouter"
+	"github.com/vinx/stream-video/api/session"
 	"net/http"
 )
 
@@ -55,7 +55,3 @@ func main() {
 	mh := NewMiddleWareHandler(r)
 	http.ListenAndServe(":8000", mh)
 }
-
-
-
-

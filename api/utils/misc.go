@@ -2,13 +2,13 @@ package utils
 
 import (
 	"crypto/rand"
-	"io"
 	"fmt"
-	"time"
-	"strconv"
-	"net/http"
+	"github.com/vinx/stream-video/web/config"
+	"io"
 	"log"
-	"avenssi/config"
+	"net/http"
+	"strconv"
+	"time"
 )
 
 func NewUUID() (string, error) {
@@ -24,7 +24,7 @@ func NewUUID() (string, error) {
 	return fmt.Sprintf("%x-%x-%x-%x-%x", uuid[0:4], uuid[4:6], uuid[6:8], uuid[8:10], uuid[10:]), nil
 }
 
-func GetCurrentTimestampSec() int{
+func GetCurrentTimestampSec() int {
 	ts, _ := strconv.Atoi(strconv.FormatInt(time.Now().UnixNano()/1000000000, 10))
 	return ts
 }
@@ -37,6 +37,3 @@ func SendDeleteVideoRequest(id string) {
 		log.Printf("Sending deleting video request error: %s", err)
 	}
 }
-
-
-

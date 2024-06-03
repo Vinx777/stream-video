@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/avenssi/video_server/api/defs"
-	"github.com/avenssi/video_server/api/session"
+	"github.com/vinx/stream-video/api/defs"
+	"github.com/vinx/stream-video/api/session"
 	"net/http"
 )
 

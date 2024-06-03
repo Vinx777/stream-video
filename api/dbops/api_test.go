@@ -1,12 +1,11 @@
 package dbops
 
 import (
-	"testing"
-	"strconv"
-	"time"
 	"fmt"
+	"strconv"
+	"testing"
+	"time"
 )
-
 
 var tempvid string
 
@@ -31,28 +30,28 @@ func TestUserWorkFlow(t *testing.T) {
 }
 
 func testAddUser(t *testing.T) {
-	err := AddUserCredential("avenssi", "123")
+	err := AddUserCredential("vinx", "123")
 	if err != nil {
 		t.Errorf("Error of AddUser: %v", err)
 	}
 }
 
 func testGetUser(t *testing.T) {
-	pwd, err := GetUserCredential("avenssi")
+	pwd, err := GetUserCredential("vinx")
 	if pwd != "123" || err != nil {
 		t.Errorf("Error of GetUser")
 	}
 }
 
-func  testDeleteUser(t *testing.T) {
-	err := DeleteUser("avenssi", "123")
+func testDeleteUser(t *testing.T) {
+	err := DeleteUser("vinx", "123")
 	if err != nil {
 		t.Errorf("Error of DeleteUser: %v", err)
 	}
 }
 
 func testRegetUser(t *testing.T) {
-	pwd, err := GetUserCredential("avenssi")
+	pwd, err := GetUserCredential("vinx")
 	if err != nil {
 		t.Errorf("Error of RegetUser: %v", err)
 	}
@@ -95,7 +94,7 @@ func testDeleteVideoInfo(t *testing.T) {
 
 func testRegetVideoInfo(t *testing.T) {
 	vi, err := GetVideoInfo(tempvid)
-	if err != nil || vi != nil{
+	if err != nil || vi != nil {
 		t.Errorf("Error of RegetVideoInfo: %v", err)
 	}
 }
@@ -132,8 +131,4 @@ func testListComments(t *testing.T) {
 	for i, ele := range res {
 		fmt.Printf("comment: %d, %v \n", i, ele)
 	}
-}	
-
-
-
-
+}

@@ -1,9 +1,9 @@
-package ossops 
+package ossops
 
 import (
-	"log"
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
-	"avenssi/config"
+	"github.com/vinx/stream-video/web/config"
+	"log"
 )
 
 var EP string
@@ -59,5 +59,3 @@ func DeleteObject(filename string, bn string) bool {
 
 	return true
 }
-
-

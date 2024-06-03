@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/avenssi/video_server/api/defs"
+	"github.com/vinx/stream-video/api/defs"
 	"io"
 	"net/http"
 )
