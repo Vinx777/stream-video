@@ -2,12 +2,12 @@ package config
 
 import (
 	"encoding/json"
+	_ "log"
 	"os"
-	"log"
 )
 
 type Configuration struct {
-	LBAddr string `json:"lb_addr"`
+	LBAddr  string `json:"lb_addr"`
 	OssAddr string `json:"oss_addr"`
 }
 
@@ -32,11 +32,3 @@ func GetLbAddr() string {
 func GetOssAddr() string {
 	return configuration.OssAddr
 }
-
-
-
-
-
-
-
-
